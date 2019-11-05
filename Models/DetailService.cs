@@ -11,8 +11,12 @@ namespace CDCNPM_FInal.Models
     {
         [Key]
         public string BookingID { get; set; }
+        
         public string ServiceID { get; set; }
+
+        [ForeignKey("BookingID")]
         public Booking Booking { get; set; }
+        [ForeignKey("ServiceID")]
         public Service Service { get; set; }
     }
 }

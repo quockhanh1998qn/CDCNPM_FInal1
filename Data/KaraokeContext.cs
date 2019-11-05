@@ -1,5 +1,6 @@
 ﻿using CDCNPM_Final.Models;
 using CDCNPM_FInal.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace CDCNPM_Final.Data
         {
         }
 
-        public KaraokeContext(DbContextOptions<KaraokeContext> options) : base(options)
+        public KaraokeContext(DbContextOptions options) : base(options)
         {
 
         }
@@ -23,5 +24,8 @@ namespace CDCNPM_Final.Data
         public DbSet<Service> Services { get; set; }
         public DbSet<DetailService> DetailServices { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
+        //public DbSet<AppUser> AppUsers { get; set; }
+        //public DbSet<AppRole> AppRoles { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

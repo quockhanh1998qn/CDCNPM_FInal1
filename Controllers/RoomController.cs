@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using CDCNPM_Final.Data;
 using CDCNPM_Final.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CDCNPM_FInal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+ 
     public class RoomController : ControllerBase
     {
         private KaraokeContext db;
