@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CDCNPM_FInal.Migrations
 {
     [DbContext(typeof(KaraokeContext))]
-    [Migration("20191003140200_D")]
-    partial class D
+    [Migration("20191105152149_A")]
+    partial class A
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,16 +55,11 @@ namespace CDCNPM_FInal.Migrations
 
             modelBuilder.Entity("CDCNPM_FInal.Models.DetailService", b =>
                 {
-                    b.Property<string>("BookingID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("BookingID1");
+                    b.Property<string>("BookingID");
 
                     b.Property<string>("ServiceID");
 
                     b.HasKey("BookingID");
-
-                    b.HasIndex("BookingID1");
 
                     b.HasIndex("ServiceID");
 
@@ -104,6 +99,29 @@ namespace CDCNPM_FInal.Migrations
                     b.ToTable("Services");
                 });
 
+            modelBuilder.Entity("CDCNPM_FInal.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<byte[]>("PasswordHash");
+
+                    b.Property<byte[]>("PasswordSalt");
+
+                    b.Property<string>("Role");
+
+                    b.Property<string>("Username");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("CDCNPM_Final.Models.Room", b =>
                 {
                     b.Property<int>("RoomID")
@@ -126,7 +144,7 @@ namespace CDCNPM_FInal.Migrations
             modelBuilder.Entity("CDCNPM_FInal.Models.Booking", b =>
                 {
                     b.HasOne("CDCNPM_Final.Models.Room", "Room")
-                        .WithMany("Bookings")
+                        .WithMany()
                         .HasForeignKey("RoomID");
                 });
 
@@ -134,7 +152,8 @@ namespace CDCNPM_FInal.Migrations
                 {
                     b.HasOne("CDCNPM_FInal.Models.Booking", "Booking")
                         .WithMany("DetailServices")
-                        .HasForeignKey("BookingID1");
+                        .HasForeignKey("BookingID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("CDCNPM_FInal.Models.Service", "Service")
                         .WithMany("DetailServices")

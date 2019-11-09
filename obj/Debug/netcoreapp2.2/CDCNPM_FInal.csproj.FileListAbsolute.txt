@@ -26,3 +26,17 @@ D:\CDCNPM_FInal1\CDCNPM_FInal1\obj\Debug\netcoreapp2.2\CDCNPM_FInal.AssemblyInfo
 D:\CDCNPM_FInal1\CDCNPM_FInal1\obj\Debug\netcoreapp2.2\CDCNPM_FInal.RazorTargetAssemblyInfo.cache
 D:\CDCNPM_FInal1\CDCNPM_FInal1\obj\Debug\netcoreapp2.2\CDCNPM_FInal.dll
 D:\CDCNPM_FInal1\CDCNPM_FInal1\obj\Debug\netcoreapp2.2\CDCNPM_FInal.pdb
+D:\CDCNPM_FInal1\CDCNPM_FInal1\bin\Debug\netcoreapp2.2\CDCNPM_FInal.Views.dll
+D:\CDCNPM_FInal1\CDCNPM_FInal1\bin\Debug\netcoreapp2.2\CDCNPM_FInal.Views.pdb
+D:\CDCNPM_FInal1\CDCNPM_FInal1\obj\Debug\netcoreapp2.2\CDCNPM_FInal.TagHelpers.input.cache
+D:\CDCNPM_FInal1\CDCNPM_FInal1\obj\Debug\netcoreapp2.2\CDCNPM_FInal.TagHelpers.output.cache
+D:\CDCNPM_FInal1\CDCNPM_FInal1\obj\Debug\netcoreapp2.2\CDCNPM_FInal.RazorCoreGenerate.cache
+D:\CDCNPM_FInal1\CDCNPM_FInal1\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_CookieConsentPartial.g.cshtml.cs
+D:\CDCNPM_FInal1\CDCNPM_FInal1\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_Layout.g.cshtml.cs
+D:\CDCNPM_FInal1\CDCNPM_FInal1\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_LoginPartial.g.cshtml.cs
+D:\CDCNPM_FInal1\CDCNPM_FInal1\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_ValidationScriptsPartial.g.cshtml.cs
+D:\CDCNPM_FInal1\CDCNPM_FInal1\obj\Debug\netcoreapp2.2\Razor\Pages\_ViewImports.g.cshtml.cs
+D:\CDCNPM_FInal1\CDCNPM_FInal1\obj\Debug\netcoreapp2.2\Razor\Pages\_ViewStart.g.cshtml.cs
+D:\CDCNPM_FInal1\CDCNPM_FInal1\obj\Debug\netcoreapp2.2\CDCNPM_FInal.RazorTargetAssemblyInfo.cs
+D:\CDCNPM_FInal1\CDCNPM_FInal1\obj\Debug\netcoreapp2.2\CDCNPM_FInal.Views.pdb
+D:\CDCNPM_FInal1\CDCNPM_FInal1\obj\Debug\netcoreapp2.2\CDCNPM_FInal.csproj.CopyComplete

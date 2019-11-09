@@ -22,6 +22,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using System.Text;
 using CDCNPM_FInal.Services;
 using CDCNPM_FInal.Helpers;
+using AutoMapper;
 
 namespace CDCNPM_Final
 {
@@ -40,7 +41,12 @@ namespace CDCNPM_Final
             services.AddCors();
             services.AddDbContext<KaraokeContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); 
+
+        
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddAutoMapper();
+
+            // configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
 
@@ -51,14 +57,14 @@ namespace CDCNPM_Final
                 AddJsonOptions(options =>
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
-            services.AddScoped<IUserService, UserService>();
+            
 
-            //services.AddIdentity<AppUser, AppRole>()
-              //  .AddEntityFrameworkStores<KaraokeContext>()
+            //services.AddIdentityCore<IdentityUser>()
+                //.AddEntityFrameworkStores<KaraokeContext>()
                 //.AddDefaultTokenProviders();
 
-              //services.AddScoped<SignInManager<AppUser>, SignInManager<AppUser>>();
-            //services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
+           // services.AddScoped<SignInManager<User>, SignInManager<User>>();
+            //services.AddScoped<UserManager<User>, UserManager<User>>();
             //services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
 
             // Configure Identity
@@ -78,6 +84,7 @@ namespace CDCNPM_Final
                 // User settings
                 options.User.RequireUniqueEmail = true;
             });
+
             //Config authen
             services.AddAuthentication(o =>
             {
@@ -85,6 +92,21 @@ namespace CDCNPM_Final
                 o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(x =>
             {
+                x.Events = new JwtBearerEvents
+                {
+                    OnTokenValidated = context =>
+                    {
+                        var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
+                        var userId = int.Parse(context.Principal.Identity.Name);
+                        var user = userService.GetById(userId);
+                        if (user == null)
+                        {
+                            // return unauthorized if user no longer exists
+                            context.Fail("Unauthorized");
+                        }
+                        return Task.CompletedTask;
+                    }
+                };
                 x.RequireHttpsMetadata = false;
                 x.SaveToken = true;
                 x.TokenValidationParameters = new TokenValidationParameters
@@ -95,6 +117,7 @@ namespace CDCNPM_Final
                     ValidateAudience = false
                 };
             });
+            services.AddScoped<IUserService, UserService>();
 
             services.AddSwaggerGen(s =>
             {
