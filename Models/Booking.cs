@@ -10,7 +10,7 @@ namespace CDCNPM_FInal.Models
 {
     public class Booking
     {
-        public Booking(string bookingID, string cusName, string cusPhone, DateTime startTime, DateTime endTime, double preMoney, double total, string status, DateTime date, string username)
+        public Booking(string bookingID, string cusName, string cusPhone, DateTime startTime, DateTime endTime, double preMoney, double total, string status, DateTime date, string username, int? roomID )
         {
             BookingID = bookingID;
             CusName = cusName;
@@ -22,6 +22,7 @@ namespace CDCNPM_FInal.Models
             Status = status;
             Date = date;
             Username = username;
+            RoomID = roomID;
            
         }
         [Key]
@@ -47,8 +48,8 @@ namespace CDCNPM_FInal.Models
         public int? RoomID { get; set; }
 
         [ForeignKey("RoomID")]
-        public Room Room { get; set; }
-        public Invoice Invoice { get; set; }
+        public virtual Room Room { get; set; }
+        public virtual Invoice Invoice { get; set; }
 
         public virtual ICollection<DetailService> DetailServices { get; set; }
 

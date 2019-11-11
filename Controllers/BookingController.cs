@@ -33,6 +33,13 @@ namespace CDCNPM_FInal.Controllers
             return db.Bookings.Where(booking => booking.BookingID.Equals(id)).FirstOrDefault<Booking>();
         }
 
+        [HttpGet("GetRoomID/{roomID}")]
+        public List<Booking> GetByRoomID(int roomID)
+        {
+            return db.Bookings.Where(booking => booking.RoomID.Equals(roomID)).ToList<Booking>();
+        }
+
+
         // POST api/values
         [HttpPost]
         public bool Post(Booking booking)

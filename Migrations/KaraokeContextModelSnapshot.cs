@@ -19,7 +19,84 @@ namespace CDCNPM_FInal.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-           
+            modelBuilder.Entity("CDCNPM_FInal.Models.Booking", b =>
+                {
+                    b.Property<string>("BookingID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CusName");
+
+                    b.Property<string>("CusPhone");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<DateTime>("EndTime");
+
+                    b.Property<double>("PreMoney");
+
+                    b.Property<int?>("RoomID");
+
+                    b.Property<DateTime>("StartTime");
+
+                    b.Property<string>("Status");
+
+                    b.Property<double>("Total");
+
+                    b.Property<string>("Username");
+
+                    b.HasKey("BookingID");
+
+                    b.HasIndex("RoomID");
+
+                    b.ToTable("Bookings");
+                });
+
+            modelBuilder.Entity("CDCNPM_FInal.Models.DetailService", b =>
+                {
+                    b.Property<string>("BookingID");
+
+                    b.Property<string>("ServiceID");
+
+                    b.HasKey("BookingID");
+
+                    b.HasIndex("ServiceID");
+
+                    b.ToTable("DetailServices");
+                });
+
+            modelBuilder.Entity("CDCNPM_FInal.Models.Invoice", b =>
+                {
+                    b.Property<string>("BookingID");
+
+                    b.Property<DateTime>("Invoice_Date");
+
+                    b.Property<double>("Invoice_Total");
+
+                    b.Property<string>("User");
+
+                    b.HasKey("BookingID");
+
+                    b.ToTable("Invoices");
+                });
+
+            modelBuilder.Entity("CDCNPM_FInal.Models.Service", b =>
+                {
+                    b.Property<string>("ServiceID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.Property<double>("Price");
+
+                    b.Property<string>("Type");
+
+                    b.Property<string>("Unit");
+
+                    b.HasKey("ServiceID");
+
+                    b.ToTable("Services");
+                });
+
             modelBuilder.Entity("CDCNPM_FInal.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -43,7 +120,53 @@ namespace CDCNPM_FInal.Migrations
                     b.ToTable("Users");
                 });
 
-           
+            modelBuilder.Entity("CDCNPM_Final.Models.Room", b =>
+                {
+                    b.Property<int>("RoomID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Floor");
+
+                    b.Property<string>("Name");
+
+                    b.Property<double>("Price");
+
+                    b.Property<string>("Status");
+
+                    b.Property<string>("Type");
+
+                    b.HasKey("RoomID");
+
+                    b.ToTable("Rooms");
+                });
+
+            modelBuilder.Entity("CDCNPM_FInal.Models.Booking", b =>
+                {
+                    b.HasOne("CDCNPM_Final.Models.Room", "Room")
+                        .WithMany()
+                        .HasForeignKey("RoomID");
+                });
+
+            modelBuilder.Entity("CDCNPM_FInal.Models.DetailService", b =>
+                {
+                    b.HasOne("CDCNPM_FInal.Models.Booking", "Booking")
+                        .WithMany("DetailServices")
+                        .HasForeignKey("BookingID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CDCNPM_FInal.Models.Service", "Service")
+                        .WithMany("DetailServices")
+                        .HasForeignKey("ServiceID");
+                });
+
+            modelBuilder.Entity("CDCNPM_FInal.Models.Invoice", b =>
+                {
+                    b.HasOne("CDCNPM_FInal.Models.Booking", "Booking")
+                        .WithOne("Invoice")
+                        .HasForeignKey("CDCNPM_FInal.Models.Invoice", "BookingID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
 #pragma warning restore 612, 618
         }
     }

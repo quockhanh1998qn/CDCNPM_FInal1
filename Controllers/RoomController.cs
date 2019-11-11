@@ -34,6 +34,12 @@ namespace CDCNPM_FInal.Controllers
             return db.Rooms.Where(room => room.RoomID == id).FirstOrDefault<Room>();
         }
 
+        [HttpGet("GetFloor/{floor}")]
+        public List<Room> GetByFloor(int floor)
+        {
+            return db.Rooms.Where(room => room.Floor == floor).ToList<Room>();
+        }
+
         // POST api/values
         [HttpPost]
         public bool Post(Room room)
