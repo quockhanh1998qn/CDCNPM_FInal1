@@ -9,14 +9,23 @@ namespace CDCNPM_FInal.Models
 {
     public class DetailService
     {
-        [Key]
+   
+
         public string BookingID { get; set; }
         
+        
         public string ServiceID { get; set; }
+    
+        
+        public int Quantity { get; set; }
 
+        public double Total { get; set; }
+        
         [ForeignKey("BookingID")]
-        public Booking Booking { get; set; }
+        public  Booking Booking { get; set; }
+        
         [ForeignKey("ServiceID")]
-        public Service Service { get; set; }
+        public  Service Service { get; set; }
+
     }
 }

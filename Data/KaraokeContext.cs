@@ -27,7 +27,22 @@ namespace CDCNPM_Final.Data
         //public DbSet<AppUser> AppUsers { get; set; }
         //public DbSet<AppRole> AppRoles { get; set; }
         public DbSet<User> Users { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<DetailService>()
+                .HasKey(bc => new { bc.BookingID, bc.ServiceID });
+            modelBuilder.Entity<DetailService>()
+                .HasOne(bc => bc.Booking)
+                .WithMany(b => b.DetailServices)
+                .HasForeignKey(bc => bc.BookingID);
+            modelBuilder.Entity<DetailService>()
+                .HasOne(bc => bc.Service)
+                .WithMany(c => c.DetailServices)
+                .HasForeignKey(bc => bc.ServiceID);
+        }
     }
 
-
+    
 }
+
