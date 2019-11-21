@@ -32,7 +32,6 @@ namespace CDCNPM_FInal.Models
 
         public string CusPhone { get; set; }
 
-        [DataType(DataType.Time)]
         public DateTime StartTime { get; set; }
 
         public DateTime EndTime { get; set; }
@@ -43,7 +42,6 @@ namespace CDCNPM_FInal.Models
 
         public string Status { get; set; }
 
-        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
         public string Username { get; set; }

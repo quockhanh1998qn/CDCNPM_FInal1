@@ -9,13 +9,20 @@ namespace CDCNPM_FInal.Models
 {
     public class Invoice
     {
+        public Invoice(string invoiceID, string bookingID, DateTime invoice_Date, double invoice_Total, string user)
+        {
+            InvoiceID = invoiceID;
+            BookingID = bookingID;
+            Invoice_Date = invoice_Date;
+            Invoice_Total = invoice_Total;
+            User = user;
+        }
 
         [Key]
         public string InvoiceID { get; set; }
 
         public string BookingID { get; set; }
 
-        [DataType(DataType.Date)]
         public DateTime Invoice_Date { get; set; }
 
         public double Invoice_Total { get; set; }

@@ -4,14 +4,16 @@ using CDCNPM_Final.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CDCNPM_FInal.Migrations
 {
     [DbContext(typeof(KaraokeContext))]
-    partial class KaraokeContextModelSnapshot : ModelSnapshot
+    [Migration("20191121113840_Time")]
+    partial class Time
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,8 +82,7 @@ namespace CDCNPM_FInal.Migrations
 
                     b.Property<string>("BookingID");
 
-                    b.Property<DateTime>("Invoice_Date")
-                        .HasColumnType("smalldatetime");
+                    b.Property<DateTime>("Invoice_Date");
 
                     b.Property<double>("Invoice_Total");
 

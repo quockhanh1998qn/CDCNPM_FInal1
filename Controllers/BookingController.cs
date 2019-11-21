@@ -46,6 +46,8 @@ namespace CDCNPM_FInal.Controllers
         {
             try
             {
+                booking.StartTime = DateTime.Now;
+                booking.Date = DateTime.Now;
                 db.Bookings.Add(booking);
                 db.SaveChanges();
                 return true;

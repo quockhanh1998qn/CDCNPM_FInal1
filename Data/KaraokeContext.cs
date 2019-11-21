@@ -40,6 +40,15 @@ namespace CDCNPM_Final.Data
                 .HasOne(bc => bc.Service)
                 .WithMany(c => c.DetailServices)
                 .HasForeignKey(bc => bc.ServiceID);
+            
+            var booking = modelBuilder.Entity<Booking>();
+            booking.Property(f => f.Date).HasColumnType("smalldatetime");
+            booking.Property(f => f.StartTime).HasColumnType("smalldatetime");
+            booking.Property(f => f.EndTime).HasColumnType("smalldatetime");
+
+            var invoice = modelBuilder.Entity<Invoice>();
+            invoice.Property(f => f.Invoice_Date).HasColumnType("smalldatetime");
+            base.OnModelCreating(modelBuilder);
         }
     }
 
