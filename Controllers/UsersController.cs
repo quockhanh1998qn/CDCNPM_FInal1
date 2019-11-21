@@ -67,7 +67,7 @@ namespace CDCNPM_FInal.Controllers
             });
         }
 
-        [Authorize(Roles = Role.Manager)]
+        //[Authorize(Roles = Role.Manager)]
         [HttpPost("register")]
         public IActionResult Register([FromBody]UserDto userDto)
         {

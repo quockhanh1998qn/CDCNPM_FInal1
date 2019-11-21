@@ -60,6 +60,7 @@ namespace CDCNPM_FInal.Controllers
                     _detail.ServiceID = detail.ServiceID;
                     _detail.Quantity = detail.Quantity;
                     _detail.Total = detail.Total;
+                    _detail.Status = detail.Status;
 
                     db.SaveChanges();
                     return true;
@@ -76,5 +77,22 @@ namespace CDCNPM_FInal.Controllers
                 return false;
             }
         }
+
+        [HttpDelete]
+        public bool Delete(DetailService detail)
+        {
+            try
+            {
+                db.DetailServices.Remove(detail);
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
     }
 }

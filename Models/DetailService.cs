@@ -20,6 +20,8 @@ namespace CDCNPM_FInal.Models
         public int Quantity { get; set; }
 
         public double Total { get; set; }
+
+        public string Status { get; set; }
         
         [ForeignKey("BookingID")]
         public  Booking Booking { get; set; }
