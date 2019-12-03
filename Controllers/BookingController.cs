@@ -48,6 +48,7 @@ namespace CDCNPM_FInal.Controllers
             {
                 booking.StartTime = DateTime.Now;
                 booking.Date = DateTime.Now;
+                booking.EndTime = DateTime.Now;
                 db.Bookings.Add(booking);
                 db.SaveChanges();
                 return true;
@@ -63,26 +64,13 @@ namespace CDCNPM_FInal.Controllers
         {
             try
             {
-                var _booking = db.Bookings.Where(a => a.BookingID == booking.BookingID).FirstOrDefault<Booking>();
-                if (_booking != null)
-                {
-                    _booking.BookingID = booking.BookingID;
-                    _booking.CusName = booking.CusName;
-                    _booking.CusPhone = booking.CusPhone;
-                    _booking.EndTime = DateTime.Now;
-                    _booking.PreMoney = booking.PreMoney;
-                    _booking.Total = booking.Total;
-                    _booking.Status = booking.Status;
-                    _booking.Username = booking.Username;
-                    _booking.RoomID = booking.RoomID;
-
-                    db.SaveChanges();
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                Booking rel = db.Bookings.Find(booking.BookingID);
+                booking.StartTime = rel.StartTime;
+                booking.EndTime = DateTime.Now;
+                booking.Date = DateTime.Now;
+                db.Entry(rel).CurrentValues.SetValues(booking);
+                db.SaveChanges();
+                return true;
 
 
             }
