@@ -33,12 +33,34 @@ namespace CDCNPM_FInal.Controllers
             return db.Invoices.Where(a => a.BookingID == bookingID).FirstOrDefault<Invoice>();
         }
 
+        [HttpGet("GetDate/{date}")]
+        public List<Invoice> GetByDate(DateTime date)
+        {
+            return db.Invoices.Where(a => a.Invoice_Date.Date == date.Date).ToList<Invoice>();
+        }
+
+        [HttpGet("GetMonth/{month}")]
+        public List<Invoice> GetByMonth(int year,int month)
+        {
+            return db.Invoices.Where(a => a.Invoice_Date.Month == month && a.Invoice_Date.Year == year).ToList<Invoice>();
+          
+        }
+
+
+        [HttpGet("GetYear/{year}")]
+        public List<Invoice> GetByYear(int year)
+        {
+            return db.Invoices.Where(a => a.Invoice_Date.Year == year).ToList<Invoice>();
+
+        }
+
         // POST api/values
         [HttpPost]
         public bool Post(Invoice invoice)
         {
             try
             {
+                invoice.Invoice_Date = DateTime.Now;
                 db.Invoices.Add(invoice);
                 db.SaveChanges();
                 return true;

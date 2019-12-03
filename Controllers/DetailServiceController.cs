@@ -62,6 +62,7 @@ namespace CDCNPM_FInal.Controllers
                     _detail.Total = detail.Total;
                     _detail.Status = detail.Status;
 
+
                     db.SaveChanges();
                     return true;
                 }
