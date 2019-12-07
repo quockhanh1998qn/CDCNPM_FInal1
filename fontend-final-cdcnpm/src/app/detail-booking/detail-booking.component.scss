@@ -1,0 +1,113 @@
+*{
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.mat-dialog-container  {
+  padding: 25px!important;
+}
+
+.container {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+    .left {
+        border: 1px solid #eee;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+        width: 60%;
+        .top {
+            height: 70vh;
+            border-bottom: 2px solid black;
+        }
+        .botton {
+            margin-top: 3px;
+            height: calc(30vh - 80px);
+        }
+
+    }
+    .right {
+        border-left: 2px solid black;
+        width: 40%; 
+    }
+}
+
+.wrapper-breadcrumb a {
+    color: white;
+    padding: 5px;
+    text-decoration: none;
+    font-size: 16px;
+}
+  ::ng-deep .mat-dialog-container { 
+    padding: 0 !important;
+  }
+  .modal {
+    width: auto;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.6rem 3rem;
+    border: 3px solid black;
+    border-radius: 5px;
+    background: darkslategray;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  .message {
+    font-size:1.1rem;
+    margin-bottom: 1.6rem;
+    margin-top: 0;
+  }
+  .btn {
+    color:inherit;
+    font-family:inherit;
+    font-size: inherit;
+    background: cadetblue;
+    padding: 0.3rem 3.4rem;
+    border: 3px solid black;
+    margin-right: 2.6rem;
+    box-shadow: 0 0 0 black;
+    transition: all 0.2s;
+  }
+  
+  .btn:last-child {
+    margin: 0;
+  }
+  
+  .btn:hover {
+    box-shadow: 0.4rem 0.4rem 0 black;
+    transform: translate(-0.4rem, -0.4rem);
+  }
+  
+  .btn:active {
+    box-shadow: 0 0 0 black;
+    transform: translate(0, 0);
+  }
+  
+  .options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .notification {
+    text-align: center;
+  }
+
+  .wrapper-spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    mat-spinner{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+    }
+}
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle{
+    stroke: cornflowerblue;
+}

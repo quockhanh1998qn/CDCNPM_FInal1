@@ -1,0 +1,66 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+.container {
+    display: flex;
+    color: black;
+    .floor {
+        position: relative;
+        padding: 10px;
+        width: 33%;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    .floor:first-child::after, .floor:nth-child(2)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      transform: translateY(10px);
+      width: 5px;
+      background-color: black;
+      height: 65vh;
+      border-radius: 30%;
+    }
+}
+
+.wrapper-title {
+    box-sizing: border-box;
+    display: flex;
+    color: white;
+    text-align: center;
+    .title {
+        border-top: 1px solid white;
+        background-color: darkcyan;
+        padding: 20px;
+        width: 33%;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+}
+
+.wrapper-spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    mat-spinner{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+    }
+}
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle{
+    stroke: cornflowerblue;
+}
+

@@ -1,0 +1,43 @@
+.container {
+    box-sizing: border-box;
+    color: white;
+    background-color:darkslategray; 
+    height: 124px; 
+    width: 100%;
+    .wrapper-header {
+        line-height: 124px;
+        display: flex;
+        .left {
+            position: relative;
+            width: 90px;
+            text-align: center;
+            border-right: 2px solid white;
+            border-radius: 16px;
+        }
+        .right {
+            font-size: 20px;
+            display: flex;
+            .title {
+                padding-left: 20px;
+                font-size: 36px;
+                text-transform: uppercase;
+                font-weight: 400;
+            }
+            .img {
+                width:100px; 
+                height:123px; 
+                background-color: white;
+                img {
+                    width:100%;
+                }
+            }
+        }
+    }
+}
+
+::ng-deep .mat-icon {
+    width: 100%!important;
+    height: auto!important;
+    transform: translateY(10px);
+    font-size: 30px;
+}

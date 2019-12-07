@@ -1,0 +1,40 @@
+<mat-toolbar style="background-color: darkslategray;">
+  <span class="wrapper-breadcrumb">
+    <span style="color: lightblue; font-weight: normal" (click)="goToDashboard(booking)">Dashboard </span>
+    <span>></span>
+    <span> Chi Tiết - {{room.Name}}</span>
+  </span>
+</mat-toolbar>
+<div class="container">
+  <div class="left">
+    <app-service-detail></app-service-detail>
+  </div>
+  <div class="right">
+    <app-invoice (showDialogPay)='showDialog($event, payment)' (showDialogBookingEvent) = 'showDialog($event, booking)' [room]="room"></app-invoice>
+  </div>
+</div>
+
+<ng-template #payment>
+  <div class="modal">
+    <p class="message">Đồng ý thanh toán ?</p>
+    <div class="options">
+      <div class="btn" (click)="acceptPayment()">Đồng Ý</div>
+      <div class="btn" (click)="cancelPay()">Cancel</div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #booking>
+  <div class="modal">
+    <p class="message">Xác nhận đặt phòng</p>
+    <div class="options">
+      <div class="btn" (click)="acceptBooking()">Đặt Phòng</div>
+      <div *ngIf = "room.Status === 'preBooking'" class="btn" (click)="cancelPreBooking()">Huỷ Đặt Trước</div>
+      <div class="btn" (click)="cancelBooking()">Huỷ</div>
+    </div>
+  </div>
+</ng-template>
+
+<div *ngIf="showSpinner" class="wrapper-spinner">
+  <mat-spinner></mat-spinner>
+</div>

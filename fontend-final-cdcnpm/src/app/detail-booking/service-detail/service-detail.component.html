@@ -1,0 +1,27 @@
+<mat-tab-group headerPosition="below" class="container">
+    <mat-tab isActive = true>
+        <ng-template mat-tab-label>
+            <div class="card">
+                <div><img src="../../../assets/drink.png" alt="Drink"></div>
+            </div>
+        </ng-template>
+        <div class="top">
+            <div class="wrapper-services">
+                <app-item-service class="item" *ngFor="let item of drinkItems" [item]="item" (click)="HandleDrink(item)"></app-item-service>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <div class="card">
+                <div><img src="../../../assets/food.jpg" alt="Drink"></div>
+            </div>
+        </ng-template>
+
+        <div class="top">
+            <div class="wrapper-services">
+                <app-item-service class="item" *ngFor="let item of foodItems" [item]="item" (click)="HandleFood(item)"></app-item-service>
+            </div>
+        </div>
+    </mat-tab>
+</mat-tab-group>

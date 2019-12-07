@@ -1,0 +1,67 @@
+<!-- <mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field> -->
+<mat-toolbar style="background-color: darkslategray;">
+  <span class="wrapper-breadcrumb">
+    <span style="color: lightblue; font-weight: normal" (click)="goToDashboard()">Dashboard </span>
+    <span>></span>
+    <span> Thống kê</span>
+  </span>
+</mat-toolbar>
+<div style="padding: 0px 10px">
+  <span>Thống kê theo: </span>
+  <mat-radio-group aria-label="Thống kê theo" style="margin-left: 10px" [(ngModel)]="typeOfClassification">
+    <mat-radio-button value="d">Ngày</mat-radio-button>
+    <mat-radio-button value="m">Tháng</mat-radio-button>
+    <mat-radio-button value="y" checked>Năm</mat-radio-button>
+  </mat-radio-group>
+  <mat-form-field style="margin-left: 20px;">
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date" disabled (dateChange)="getDate($event)">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker ngDefaultControl disabled="false" ></mat-datepicker>
+  </mat-form-field>
+</div>
+
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="bookingID">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Booking ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.BookingID}} </td>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="invoiceID">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.InvoiceID}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Ngày </th>
+      <td mat-cell *matCellDef="let row"> {{row.Date}} </td>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Giờ </th>
+      <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.Time}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Tổng tiền </th>
+      <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.Total | currency:'VND':true}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <p>Tổng tiền: {{total | currency:'VND':true}}</p>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+
+<div *ngIf="showSpinner" class="wrapper-spinner">
+  <mat-spinner></mat-spinner>
+</div>

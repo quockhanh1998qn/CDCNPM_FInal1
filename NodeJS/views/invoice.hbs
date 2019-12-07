@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<style>
+  a {
+    color: #001028;
+    text-decoration: none;
+  }
+
+  body {
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    color: #001028;
+    background: #FFFFFF;
+    font-size: 14px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 30px;
+  }
+
+  table th,
+  table td {
+    text-align: center;
+  }
+
+  table th {
+    padding: 5px 20px;
+    color: #5D6975;
+    border-bottom: 1px solid #C1CED9;
+    white-space: nowrap;
+    font-weight: normal;
+  }
+
+  table .service,
+  table .desc {
+    text-align: left;
+  }
+
+  table td {
+    padding: 20px;
+    text-align: right;
+  }
+
+  table td.service,
+  table td.desc {
+    vertical-align: top;
+  }
+
+  table td.unit,
+  table td.qty,
+  table td.total {
+    font-size: 1.2em;
+  }
+
+  table td.sub {
+    border-top: 1px solid #C1CED9;
+  }
+
+  table td.grand {
+    border-top: 1px solid #5D6975;
+  }
+
+  table tr:nth-child(2n-1) td {
+    background: #EEEEEE;
+  }
+
+  table tr:last-child td {
+    background: #DDDDDD;
+  }
+</style>
+<html lang="en">
+
+<body style="text-align: center;">
+  <main>
+    <h2>Hoá Đơn</h2>
+    <p style="text-align: left;"><strong>Ngày:</strong> {{ date}} </p>
+    <p style="text-align: left;"><strong>Nhân viên:</strong>{{nameStaff}}</p>  
+    <table>
+      <thead>
+        <tr>
+          <th class="service">Dịch vụ</th>
+          <th>Số lượng</th>
+          <th>Tổng tiền</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each items}}
+        <tr>
+          <td class="desc">{{name}}</td>
+          <td class="qty">{{quantity}}</td>
+          <td class="total"> {{ total }}</td>
+        </tr>
+        {{/each}}
+        <tr>
+          <td colspan="2" class="grand total">Tổng cộng</td>
+          <td class="grand total"> {{ total }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Cám ơn quý khách</h3>
+    <h3>Hẹn gặp lại</h3>
+  </main>
+</body>
+
+</html>

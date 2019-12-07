@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Phiếu Đặt Phòng</h1>
+<div mat-dialog-content>
+  <form action="">
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Tên Khách" [(ngModel)]="data.name" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Chọn Phòng</mat-label>
+        <mat-select (selectionChange)="selected($event)">
+          <mat-option *ngFor="let room of roomList" [value]="room.RoomID">
+            {{room.Name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+          <input type="time" matInput placeholder="Giờ">
+        </mat-form-field>
+      </div>
+</form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Hủy</button>
+  <button mat-button (click)="preBooking()">Đặt Phòng</button>
+</div>

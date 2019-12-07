@@ -1,0 +1,14 @@
+<mat-card style="width: 170px;" [ngClass] = "changeStatusRoom()" (mouseenter)="hover(true)"  (mouseleave)="hover(false)">
+    <mat-card-header>
+        <mat-card-title> {{ room.Name }} </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div>Loại: {{room.Type}} </div>
+        <div>Trạng thái: {{room.Status}} </div>
+        <div *ngIf="status === 'booking'">Total: 200.000</div>
+    </mat-card-content>
+    <div class="wrappet-detail-button" [ngClass]="isHover ? 'show' : 'hidden'">
+        <div class="detail-button">></div>
+    </div>
+</mat-card >
+
